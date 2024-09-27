@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Physics-Informed Regularization for Domain-Agnostic Dynamical System Modeling">
+  <meta name="keywords" content="TREAT,Physics-informed NN; Dynamical Systems; GNN">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Physics-Informed Regularization for Domain-Agnostic Dynamical System Modeling</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/logos/icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"onload="renderMathInElement(document.body);"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/explorer-index.js"></script>
+
+  <script src="./static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://wanjiazhao1203.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Physics-Informed Regularization for Domain-Agnostic Dynamical System Modeling</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://zijieh.github.io/">Zijie Huang</a>*<sup style="color:#005587;">1</sup>,
+            </span>
+              <span class="author-block">
+              <a href="https://wanjiazhao1203.github.io/">Wanjia Zhao</a>*<sup style="color:#8C1515;">2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Jingdong Gao</a><sup style="color:#005587;">1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://acbull.github.io/">Ziniu Hu</a><sup style="color:#FF6C0C;">3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://luoxiao12.github.io/">Xiao Luo</a><sup style="color:#005587;">1</sup>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="https://eydcao.github.io/">Yadi Cao</a><sup style="color:#005587;">1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Yuanzhou Chen</a><sup style="color:#005587;">1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://web.cs.ucla.edu/~yzsun/">Yizhou Sun</a><sup style="color:#005587;">1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://web.cs.ucla.edu/~weiwang/">Wei Wang</a><sup style="color:#005587;">1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup style="color:#005587;">1</sup>University of California, Los Angeles,</span><br>
+            <span class="author-block"><sup style="color:#8C1515">2</sup>Stanford University</span>
+            <span class="author-block"><sup style="color:#FF6C0C">3</sup>California Institute of Technology</span><br>
+
+            <span class="paper-block"><b >* Equal Contribution</b> </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2310.06427.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2310.06427"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/wanjiaZhao1203/TREAT"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/wanjiaZhao1203/TREAT/tree/main/data"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa-light fa-database"></i>
+                  </span>
+              <span>Data</span> 
+              </a>
+              <!-- Twitter Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <p style="font-size:18px">🌐</p>
+                  </span>
+                  <span>Twitter</span>
+                </a>
+              </span> -->
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="content has-text-centered">
+      <img src="figures/framework.png" alt="geometric reasoning" width="80%"/>
+      <p> 
+        Overall framework of <b>TREAT</b>. \(O_1, O_2, O_3\) are connected agents. 
+        It follows the encoder-processor-decoder architecture introduced. 
+        A novel TRS loss is incorporated to improve modeling accuracy across systems from the numerical aspect, regardless of their physical properties.      
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Introduction</h2>
+        <div class="content has-text-justified">
+          
+          <p>
+            Learning complex physical dynamics purely from data is challenging due to the intrinsic properties of systems to be satisfied. 
+            Incorporating physics-informed priors, such as in Hamiltonian Neural Networks (HNNs), achieves high-precision modeling for energy-conservative systems. 
+            However, real-world systems often deviate from strict energy conservation and follow different physical priors. 
+          </p>
+            <img src="./figures/intro.png"
+                 class="interpolation-image"
+                 alt="motivation."/>
+          <p>
+            To address this, we present a framework that achieves high-precision modeling for a wide range of dynamical systems from the numerical aspect, by enforcing <b>Time-Reversal Symmetry </b> (TRS) via a novel regularization term. 
+            It helps preserve energies for conservative systems while serving as a strong inductive bias for non-conservative, reversible systems.
+          </p>
+            
+          <p>
+            While TRS is a domain-specific physical prior, we present <b>the first theoretical proof</b> that TRS loss can universally improve modeling accuracy by minimizing higher-order Taylor terms in ODE integration, which is numerically beneficial to various systems regardless of their properties, even for irreversible systems. 
+            By integrating the TRS loss within neural ordinary differential equation models, the proposed model \model demonstrates superior performance on diverse physical systems. It achieves a significant 11.5% MSE improvement in a challenging chaotic triple-pendulum scenario, underscoring \model's broad applicability and effectiveness. 
+          </p>
+    
+          
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop ">
+    <!-- The symmetry. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">The Time-Reversal Symmetry</h2>
+        <div class="content has-text-justified">
+          Consider a dynamical system described in the form of  \(\frac{d\boldsymbol{x}(t)}{dt}=F(\boldsymbol{x}(t))\), where \(\boldsymbol{x}(t) \in \Omega\) is the observed states such as positions.
+          The system is said to follow the <b>Time-Reversal Symmetry</b> if there exists a reversing operator \(R:\Omega \mapsto \Omega\) such that:
+          $$
+              \frac{d \big( R \circ \boldsymbol{x} (t) \big)}{dt} = -F\big(R \circ \boldsymbol{x}(t)\big),
+          $$
+          where \(\circ\)denote the action of functional \(R\) on the function \(\boldsymbol{x}\).
+        </div>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="figures/implement.png" alt="image name" width="85%"/>
+              <p> Illustration of time-reversal symmetry.
+                The total length of the trajectory is \(t_K-t_0 = T\). \(t_k'\) is the time index in the reverse trajectory, which points to the same time as \(t_{K-k}\) in the forward trajectory.</p>
+            </div>
+          </div>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="figures/algorithm.png" alt="image name" width="95%"/>
+              <p> Implementation of the Time-Reversal Symmetry Loss.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ The symmetry. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Theoretical Analysis. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Theoretical Analysis</h2>
+        <div class="content has-text-justified">
+          <b><span> Theorem 3.1</span></b>
+          Let \(\Delta t\) denote the integration step size in an ODE solver and \(T\) be the prediction length. The reconstruction loss \(\mathcal{L}_{pred}\) is  \(\mathcal{O} (T^3 \Delta t^2)\). The time-reversal loss \(\mathcal{L}_{reverse}\)  is \(\mathcal{O} (T^5 \Delta t^4)\). 
+          
+          <p><br> We can see two nice properties of our proposed time-reversal loss:</p>
+          <ol>
+              <li>Regarding the relationship to \( \Delta t \), \( \mathcal{L}_{reverse} \) is optimizing a high-order term \( \Delta t^4 \), which forces the model to predict fine-grained physical properties such as jerk (the derivatives of accelerations). In comparison, the reconstruction loss optimizes \( \Delta t^2 \), which mainly guides the model to predict the locations/velocities accurately. Therefore, the combined loss enables our model to be more noise-tolerable.</li>
+              <li>Regarding the relationship to \( T \), \( \mathcal{L}_{reverse} \) is more sensitive to total sequence length (\( T^5 \)), thus it provides more regularization for long-context prediction, a key challenge for dynamic modeling.</li>
+          </ol>
+          
+          
+        </div>
+      </div>
+    </div>
+    <!--/ Theoretical Analysis. -->
+  </div>
+</section>
+
+
+<!-- Main Results -->
+<section class="section">
+  <div class="container is-max-desktop ">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+        <h2 class="title is-3">Results and Visualization</h2>
+        <div class="content has-text-justified">
+          <p>
+            To demonstrate the effectiveness of <b>TREAT</b>, We conduct systematic evaluations over five multi-agent systems including three 5-body spring systems, a complex chaotic pendulum system and a real-world motion capture dataset; 
+            and four single-agent systems including three spring systems (with only one node) and a chaotic strange attractors system.
+          </p>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            Table 1 shows the prediction performance on both multi-agent systems and single-agent systems measured by mean squared error (MSE).
+            We can see that <b>TREAT</b> consistently surpasses other models,highlighting its generalizability and the efficacy of the proposed TRS loss. 
+          </p>
+
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="figures/table1.png" alt="image name" width="95%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="figures/visual.png" alt="image name" width="75%"/>
+                <p> Visualization for 5-body spring systems (trajectory starts from light to dark colors).</p>
+              </div>
+            </div>
+
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="figures/reversal_loss_visual.png" alt="image name" width="90%"/>
+                <p> TRS loss visualization across multi-agent datasets (scales of two y-axes are different).</p>
+              </div>
+            </div>
+          </div>
+          <p>
+            We conducted ablation studies on the implementation of \(\mathcal{L}_{reverse}\), evaluated performance across different prediction lengths and coefficients, and performed sensitivity analyses on solver choice and observation ratios.        
+          </p>
+          <div id="results-carousel" class="carousel results-carousel">
+            
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="figures/varying_lengths.png" alt="image name" width="100%"/>
+                <p>Varying prediction lengths across multi-agent datasets (Pendulum MSE is in log values).</p>
+              </div>
+            </div>
+
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="figures/varying_alphas.png" alt="image name" width="100%"/>  
+                <p>Varying \(\alpha\) values across multi-agent datasets.</p>
+              </div>
+            </div>
+
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="figures/table3.png" alt="image name" width="100%"/>
+              </div>
+            </div>
+
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="figures/table4.png" alt="image name" width="100%"/>
+              </div>
+            </div>
+
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="figures/table5.png" alt="image name" width="100%"/>
+              </div>
+            </div>
+        
+          </div>
+          <p>We also demonstrate the chaotic behavior of the triple pendulum which often referred to as the "butterfly effect", and calculate the Maximum Lyapunov Exponent (MLE) to quantify the level of chaos in different kinds of systems.</p>
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="figures/compare_theta3.png" alt="image name" width="75%"/>
+                <p> Illustration to show the pendulum is highly-sensitive to initial states</p>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="figures/table2.png" alt="image name" width="95%"/>
+              </div>
+            </div>
+          </div>
+          <video id="teaser" autoplay muted loop playsinline height="100%" width="85%">
+            <source src="./figures/pendulum_gt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{huang2023tango,
+      title={TANGO: Time-Reversal Latent GraphODE for Multi-Agent Dynamical Systems},
+      author={Huang, Zijie and Zhao, Wanjia and Gao, Jingdong and Hu, Ziniu and Luo, Xiao and Cao, Yadi and Chen, Yuanzhou and Sun, Yizhou and Wang, Wei},
+      journal={arXiv preprint arXiv:2310.06427},
+      year={2023}
+    }</code></pre>
+  </div>
+</section>
+
+<section>
+  <div class="section" id="org-banners" style="display:flex">
+    <a href="https://www.ucla.edu/" target="_blank" rel="external">
+        <img class="center-block org-banner" src="static/logos/ucla.png">
+    
+    <a href="https://www.stanford.edu/" target="_blank" rel="external">
+        <img class="center-block org-banner" src="static/logos/stanford.png">
+    </a>
+    </a>
+    <a href="https://www.caltech.edu/" target="blank" class="ext-link">
+        <img class="center-block org-banner" src="static/logos/caltech.png">
+    </a>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The style of this website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> 
+            under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
